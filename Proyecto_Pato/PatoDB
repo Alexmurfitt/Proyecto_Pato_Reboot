@@ -16,6 +16,18 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Temporary view structure for view `Correccion`
+--
+
+DROP TABLE IF EXISTS `Correccion`;
+/*!50001 DROP VIEW IF EXISTS `Correccion`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Correccion` AS SELECT 
+ 1 AS `persona_id`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `Declaraciones`
 --
 
@@ -147,12 +159,12 @@ CREATE TABLE `Personas` (
   `inventario_id` int DEFAULT NULL,
   `color_pelo` enum('negro','rubio','pelirrojo') DEFAULT NULL,
   `altura` enum('alto','medio','bajo') DEFAULT NULL,
-  `constitucion` enum('fuerte','normal','delagada') DEFAULT NULL,
+  `constitucion` enum('fuerte','normal','delgada') DEFAULT NULL,
   PRIMARY KEY (`persona_id`),
   UNIQUE KEY `persona_id` (`persona_id`),
   KEY `inventario_id` (`inventario_id`),
   CONSTRAINT `Personas_ibfk_1` FOREIGN KEY (`inventario_id`) REFERENCES `Inventario` (`inventario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +173,7 @@ CREATE TABLE `Personas` (
 
 LOCK TABLES `Personas` WRITE;
 /*!40000 ALTER TABLE `Personas` DISABLE KEYS */;
-INSERT INTO `Personas` VALUES (1,'Rafiki','Ndiaye','Alumno Reboot',1,'negro','alto','delagada'),(2,'Mustafa','Jimenez','Alumno Reboot',2,'negro','bajo','fuerte'),(3,'Simba','Hernandez','Alumno Reboot',3,'negro','alto','delagada'),(4,'Mufasa','Lion','Alumno Reboot',4,'rubio','medio','delagada'),(5,'Nala','Ndiaye','Alumno Reboot',5,'pelirrojo','alto','fuerte'),(6,'Juan','Pérez','Profesor Reeboot',NULL,'rubio','medio','normal'),(7,'María','López','Directora Reeboot',NULL,'pelirrojo','bajo','fuerte'),(8,'Carlos','Gómez','Portero',NULL,'negro','alto','fuerte'),(9,'Ana','Fernández','Joyero',NULL,'rubio','medio','delagada'),(10,'David','Martínez','Dependiente',NULL,'negro','bajo','normal'),(11,'Jose','Martinez','Joyero',NULL,'negro','medio','fuerte'),(12,'George','Smith','Joyero',NULL,'rubio','alto','delagada');
+INSERT INTO `Personas` VALUES (1,'Rafiki','Ndiaye','Alumno Reboot',1,'negro','alto','delgada'),(2,'Mustafa','Jimenez','Alumno Reboot',2,'negro','bajo','fuerte'),(3,'Simba','Hernandez','Alumno Reboot',3,'negro','alto','delgada'),(4,'Mufasa','Lion','Alumno Reboot',4,'rubio','medio','delgada'),(5,'Nala','Ndiaye','Alumno Reboot',5,'pelirrojo','alto','fuerte'),(6,'Juan','Pérez','Profesor Reeboot',NULL,'rubio','medio','normal'),(7,'María','López','Directora Reeboot',NULL,'pelirrojo','bajo','fuerte'),(8,'Carlos','Gómez','Portero',NULL,'negro','alto','fuerte'),(9,'Ana','Fernández','Joyero',NULL,'rubio','medio','delgada'),(10,'David','Martínez','Dependiente',NULL,'negro','bajo','normal'),(11,'Jose','Martinez','Joyero',NULL,'negro','medio','fuerte'),(12,'George','Smith','Joyero',NULL,'rubio','alto','delgada'),(13,'Pedro','Lopez','Alumno Reboot',1,'negro','medio','normal'),(14,'Paco','Morrison','Alumno Reboot',1,'rubio','bajo','delgada'),(15,'Matias','Santos','Alumno Reboot',2,'negro','alto','fuerte');
 /*!40000 ALTER TABLE `Personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +194,7 @@ CREATE TABLE `Registro_Reboot` (
   UNIQUE KEY `registro_id` (`registro_id`),
   KEY `persona_id` (`persona_id`),
   CONSTRAINT `Registro_Reboot_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,9 +203,29 @@ CREATE TABLE `Registro_Reboot` (
 
 LOCK TABLES `Registro_Reboot` WRITE;
 /*!40000 ALTER TABLE `Registro_Reboot` DISABLE KEYS */;
-INSERT INTO `Registro_Reboot` VALUES (1,1,'2025-03-10','09:00:00','16:00:00'),(2,1,'2025-03-11','09:00:00','16:00:00'),(3,1,'2025-03-12','09:00:00','16:00:00'),(4,1,'2025-03-13','09:00:00','16:00:00'),(5,1,'2025-03-14','09:00:00','16:00:00'),(6,2,'2025-03-10','09:00:00','16:00:00'),(7,2,'2025-03-11','09:00:00','16:00:00'),(8,2,'2025-03-13','09:00:00','16:00:00'),(9,2,'2025-03-14','09:00:00','16:00:00'),(10,3,'2025-03-10','09:00:00','16:00:00'),(11,3,'2025-03-11','09:00:00','16:00:00'),(12,3,'2025-03-12','09:00:00','16:00:00'),(13,3,'2025-03-13','09:00:00','16:00:00'),(14,3,'2025-03-14','09:00:00','16:00:00'),(15,4,'2025-03-10','09:00:00','16:00:00'),(16,4,'2025-03-11','09:00:00','16:00:00'),(17,4,'2025-03-12','09:00:00','16:00:00'),(18,4,'2025-03-13','09:00:00','16:00:00'),(19,5,'2025-03-10','09:00:00','16:00:00'),(20,5,'2025-03-11','09:00:00','16:00:00'),(21,5,'2025-03-12','09:00:00','16:00:00'),(22,5,'2025-03-13','09:00:00','16:00:00'),(23,5,'2025-03-14','09:00:00','16:00:00'),(24,6,'2025-03-10','08:00:00','16:00:00'),(25,6,'2025-03-11','08:00:00','16:00:00'),(26,6,'2025-03-12','08:00:00','16:00:00'),(27,6,'2025-03-13','08:00:00','16:00:00'),(28,6,'2025-03-14','08:00:00','16:00:00'),(29,7,'2025-03-10','10:00:00','14:00:00'),(30,7,'2025-03-11','10:00:00','14:00:00'),(31,7,'2025-03-12','10:00:00','14:00:00'),(32,7,'2025-03-13','10:00:00','14:00:00'),(33,7,'2025-03-14','10:00:00','14:00:00'),(34,1,'2025-03-10','09:00:00','16:00:00'),(35,1,'2025-03-11','09:00:00','16:00:00'),(36,1,'2025-03-12','09:00:00','16:00:00'),(37,1,'2025-03-13','09:00:00','16:00:00'),(38,1,'2025-03-14','09:00:00','16:00:00'),(39,2,'2025-03-10','09:00:00','16:00:00'),(40,2,'2025-03-11','09:00:00','16:00:00'),(41,2,'2025-03-13','09:00:00','16:00:00'),(42,2,'2025-03-14','09:00:00','16:00:00'),(43,3,'2025-03-10','09:00:00','16:00:00'),(44,3,'2025-03-11','09:00:00','16:00:00'),(45,3,'2025-03-12','09:00:00','16:00:00'),(46,3,'2025-03-13','09:00:00','16:00:00'),(47,3,'2025-03-14','09:00:00','16:00:00'),(48,4,'2025-03-10','09:00:00','16:00:00'),(49,4,'2025-03-11','09:00:00','16:00:00'),(50,4,'2025-03-12','09:00:00','16:00:00'),(51,4,'2025-03-13','09:00:00','16:00:00'),(52,5,'2025-03-10','09:00:00','16:00:00'),(53,5,'2025-03-11','09:00:00','16:00:00'),(54,5,'2025-03-12','09:00:00','16:00:00'),(55,5,'2025-03-13','09:00:00','16:00:00'),(56,5,'2025-03-14','09:00:00','16:00:00'),(57,6,'2025-03-10','08:00:00','16:00:00'),(58,6,'2025-03-11','08:00:00','16:00:00'),(59,6,'2025-03-12','08:00:00','16:00:00'),(60,6,'2025-03-13','08:00:00','16:00:00'),(61,6,'2025-03-14','08:00:00','16:00:00'),(62,7,'2025-03-10','10:00:00','14:00:00'),(63,7,'2025-03-11','10:00:00','14:00:00'),(64,7,'2025-03-12','10:00:00','14:00:00'),(65,7,'2025-03-13','10:00:00','14:00:00'),(66,7,'2025-03-14','10:00:00','14:00:00');
+INSERT INTO `Registro_Reboot` VALUES (1,1,'2025-03-10','09:00:00','16:00:00'),(2,1,'2025-03-11','09:00:00','16:00:00'),(3,1,'2025-03-12','09:00:00','16:00:00'),(4,1,'2025-03-13','09:00:00','16:00:00'),(5,1,'2025-03-14','09:00:00','16:00:00'),(6,2,'2025-03-10','09:00:00','16:00:00'),(7,2,'2025-03-11','09:00:00','16:00:00'),(8,2,'2025-03-13','09:00:00','16:00:00'),(9,2,'2025-03-14','09:00:00','16:00:00'),(10,3,'2025-03-10','09:00:00','16:00:00'),(11,3,'2025-03-11','09:00:00','16:00:00'),(12,3,'2025-03-12','09:00:00','16:00:00'),(13,3,'2025-03-13','09:00:00','16:00:00'),(14,3,'2025-03-14','09:00:00','16:00:00'),(15,4,'2025-03-10','09:00:00','16:00:00'),(16,4,'2025-03-11','09:00:00','16:00:00'),(17,4,'2025-03-12','09:00:00','16:00:00'),(18,4,'2025-03-13','09:00:00','16:00:00'),(19,5,'2025-03-10','09:00:00','16:00:00'),(20,5,'2025-03-11','09:00:00','16:00:00'),(21,5,'2025-03-12','09:00:00','16:00:00'),(22,5,'2025-03-13','09:00:00','16:00:00'),(23,5,'2025-03-14','09:00:00','16:00:00'),(24,6,'2025-03-10','08:00:00','16:00:00'),(25,6,'2025-03-11','08:00:00','16:00:00'),(26,6,'2025-03-12','08:00:00','16:00:00'),(27,6,'2025-03-13','08:00:00','16:00:00'),(28,6,'2025-03-14','08:00:00','16:00:00'),(29,7,'2025-03-10','10:00:00','14:00:00'),(30,7,'2025-03-11','10:00:00','14:00:00'),(31,7,'2025-03-12','10:00:00','14:00:00'),(32,7,'2025-03-13','10:00:00','14:00:00'),(33,7,'2025-03-14','10:00:00','14:00:00'),(34,13,'2025-03-10','09:00:00','15:30:00'),(35,13,'2025-03-11','09:00:00','15:30:00'),(36,13,'2025-03-12','09:00:00','15:30:00'),(37,13,'2025-03-13','09:00:00','15:30:00'),(38,13,'2025-03-14','09:00:00','15:30:00'),(39,14,'2025-03-10','09:10:00','16:01:00'),(40,14,'2025-03-11','09:10:00','16:01:00'),(41,14,'2025-03-12','09:10:00','16:01:00'),(42,14,'2025-03-13','09:10:00','16:01:00'),(43,15,'2025-03-10','09:10:00','16:01:00'),(44,15,'2025-03-11','09:10:00','16:01:00'),(45,15,'2025-03-12','09:10:00','13:00:00'),(46,15,'2025-03-13','09:10:00','16:01:00');
 /*!40000 ALTER TABLE `Registro_Reboot` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `Sospechoso`
+--
+
+DROP TABLE IF EXISTS `Sospechoso`;
+/*!50001 DROP VIEW IF EXISTS `Sospechoso`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Sospechoso` AS SELECT 
+ 1 AS `persona_id`,
+ 1 AS `nombre`,
+ 1 AS `apellidos`,
+ 1 AS `rol`,
+ 1 AS `inventario_id`,
+ 1 AS `color_pelo`,
+ 1 AS `altura`,
+ 1 AS `constitucion`,
+ 1 AS `fecha`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `Ubicacion_Persona`
@@ -226,6 +258,42 @@ LOCK TABLES `Ubicacion_Persona` WRITE;
 INSERT INTO `Ubicacion_Persona` VALUES (35,1,1,'13:00:00','13:30:00'),(36,1,4,'13:30:00','13:40:00'),(37,1,5,'13:40:00','13:50:00'),(38,1,6,'13:50:00','14:00:00'),(39,2,1,'13:00:00','14:00:00'),(40,3,1,'13:00:00','13:15:00'),(41,3,2,'13:15:00','14:00:00'),(42,4,2,'13:00:00','14:00:00'),(43,5,3,'13:00:00','14:00:00'),(44,6,1,'13:00:00','13:15:00'),(45,6,3,'13:15:00','14:00:00'),(46,7,5,'13:00:00','14:00:00'),(47,8,1,'13:00:00','14:30:00'),(48,8,1,'13:30:00','13:45:00'),(49,8,1,'13:45:00','14:00:00'),(50,9,4,'13:00:00','14:00:00'),(51,10,3,'13:00:00','14:00:00'),(52,11,3,'13:00:00','14:00:00'),(53,12,2,'13:00:00','14:00:00');
 /*!40000 ALTER TABLE `Ubicacion_Persona` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `Correccion`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Correccion`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`reboot`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Correccion` AS select `Personas`.`persona_id` AS `persona_id` from `Personas` where (`Personas`.`constitucion` = 'delagada') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Sospechoso`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Sospechoso`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`reboot`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Sospechoso` AS select `Personas`.`persona_id` AS `persona_id`,`Personas`.`nombre` AS `nombre`,`Personas`.`apellidos` AS `apellidos`,`Personas`.`rol` AS `rol`,`Personas`.`inventario_id` AS `inventario_id`,`Personas`.`color_pelo` AS `color_pelo`,`Personas`.`altura` AS `altura`,`Personas`.`constitucion` AS `constitucion`,`Registro_Reboot`.`fecha` AS `fecha` from (`Personas` join `Registro_Reboot` on((`Registro_Reboot`.`persona_id` = `Personas`.`persona_id`))) where (`Registro_Reboot`.`fecha` = '2025-03-12') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -236,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-14  9:27:48
+-- Dump completed on 2025-03-14 11:21:40
