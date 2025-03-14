@@ -1,0 +1,307 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for Linux (x86_64)
+--
+-- Host: 127.0.0.1    Database: PATO2
+-- ------------------------------------------------------
+-- Server version	8.0.41-0ubuntu0.24.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Temporary view structure for view `Correccion`
+--
+
+DROP TABLE IF EXISTS `Correccion`;
+/*!50001 DROP VIEW IF EXISTS `Correccion`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Correccion` AS SELECT 
+ 1 AS `persona_id`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `Declaraciones`
+--
+
+DROP TABLE IF EXISTS `Declaraciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Declaraciones` (
+  `declaraciones_id` int NOT NULL AUTO_INCREMENT,
+  `persona_id` int DEFAULT NULL,
+  `declaracion` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`declaraciones_id`),
+  UNIQUE KEY `declaraciones_id` (`declaraciones_id`),
+  KEY `persona_id` (`persona_id`),
+  CONSTRAINT `Declaraciones_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Declaraciones`
+--
+
+LOCK TABLES `Declaraciones` WRITE;
+/*!40000 ALTER TABLE `Declaraciones` DISABLE KEYS */;
+INSERT INTO `Declaraciones` VALUES (1,1,'Me quede todo el día en clases'),(2,2,'Estuve todo el rato en la academia y creo recordar que alguién más estuvo por ahí.'),(3,3,'Estuve solo un ratito en la academia y luego me fui a comprar al Spar.'),(4,4,'Fui al Spar y me encontré con un compañero'),(5,5,'Fui a merendar a la cafetería'),(6,6,'Estuve en clases y luego me fui a la cafetería y vi a un compañero'),(7,7,'Fui a la joyería a vender mi anillo de boda junto al resto de mis joyas'),(8,8,'Estuve en la academia, salí a tomar un café y volví'),(9,9,'Una persona vino varias veces para vender oro. La verdad es raro ver gente tan jóven por aquí, aunque se le notaba especialmente nervioso'),(10,10,'Estuve en el trabajo y vi a varios alumnos de reboot'),(11,11,'Hubo una persona que vino muchas veces a vender oro'),(12,12,'Un joven alto y delgado vendió oro en varias ocasiones. Además, un compañero me dijo que habia hecho muchas ventas a un solo cliente.'),(13,13,'No noté nada raro. Acompañé a Matias que se encontraba muy mal y luego volví a clase. Solo quedaba una persona cuando volví, que era Paco'),(14,14,'Estuve todo el día en la academia finalizando algunos LABS atrasados'),(15,15,'Ese día me encontraba bastante mal, asi que decicí irme algo antes. Me encontré unos conocidos en el bar, y luego fui a comprar un té al SPAR de aquí al lado');
+/*!40000 ALTER TABLE `Declaraciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Detalle_Tienda`
+--
+
+DROP TABLE IF EXISTS `Detalle_Tienda`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Detalle_Tienda` (
+  `tienda_id` int NOT NULL AUTO_INCREMENT,
+  `fecha_transaccion` date DEFAULT NULL,
+  `oro_ingresado` int DEFAULT NULL,
+  `descripcion_persona` varchar(255) DEFAULT NULL,
+  `ticket` int DEFAULT NULL,
+  `lugar_id` int DEFAULT NULL,
+  `trabajador_id` int DEFAULT NULL,
+  PRIMARY KEY (`tienda_id`),
+  UNIQUE KEY `tienda_id` (`tienda_id`),
+  KEY `lugar_id` (`lugar_id`),
+  KEY `trabajador_id` (`trabajador_id`),
+  CONSTRAINT `Detalle_Tienda_ibfk_1` FOREIGN KEY (`lugar_id`) REFERENCES `Lugares` (`lugar_id`),
+  CONSTRAINT `Detalle_Tienda_ibfk_2` FOREIGN KEY (`trabajador_id`) REFERENCES `Personas` (`persona_id`),
+  CONSTRAINT `Detalle_Tienda_ibfk_3` FOREIGN KEY (`trabajador_id`) REFERENCES `Personas` (`persona_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Detalle_Tienda`
+--
+
+LOCK TABLES `Detalle_Tienda` WRITE;
+/*!40000 ALTER TABLE `Detalle_Tienda` DISABLE KEYS */;
+INSERT INTO `Detalle_Tienda` VALUES (40,'2025-03-12',150,'Joven alto y de complexion delgada',1001,4,9),(41,'2025-03-12',150,'Joven alto y de complexion delgada',1001,4,9),(42,'2025-03-12',150,'Joven alto y de complexion delgada',1001,4,9),(43,'2025-03-12',150,'Joven alto y de complexion delgada',1001,5,11),(44,'2025-03-12',200,'Joven alto y de complexion delgada',1001,5,11),(45,'2025-03-12',200,'Joven alto y de complexion delgada',1001,6,12),(46,'2025-03-12',100,'Joven alto y fuerte',1002,4,9),(47,'2025-03-12',100,'Joven alto y fuerte',1002,4,9),(48,'2025-03-12',100,'Joven alto y fuerte',1002,4,9),(49,'2025-03-12',100,'Joven alto y fuerte',1002,5,11),(50,'2025-03-12',100,'Joven alto y fuerte',1002,5,11),(51,'2025-03-12',100,'Joven alto y fuerte',1002,5,11),(52,'2025-03-12',800,'Joven bajo y fuerte',1003,6,12);
+/*!40000 ALTER TABLE `Detalle_Tienda` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Inventario`
+--
+
+DROP TABLE IF EXISTS `Inventario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Inventario` (
+  `inventario_id` int NOT NULL AUTO_INCREMENT,
+  `tamaño` enum('Pequeño','Mediano','Grande') DEFAULT NULL,
+  `volumen_cm3` int DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`inventario_id`),
+  UNIQUE KEY `inventario_id` (`inventario_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Inventario`
+--
+
+LOCK TABLES `Inventario` WRITE;
+/*!40000 ALTER TABLE `Inventario` DISABLE KEYS */;
+INSERT INTO `Inventario` VALUES (1,'Grande',50,'Mochila negra grande'),(2,'Mediano',40,'Mochila azul mediana'),(3,'Mediano',40,'Mochila azul mediana'),(4,'Pequeño',30,'Mochila roja pequeña'),(5,'Pequeño',30,'Bolso pequeño de cuero');
+/*!40000 ALTER TABLE `Inventario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Lugares`
+--
+
+DROP TABLE IF EXISTS `Lugares`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Lugares` (
+  `lugar_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `hora_apertura` time DEFAULT NULL,
+  `hora_cierre` time DEFAULT NULL,
+  PRIMARY KEY (`lugar_id`),
+  UNIQUE KEY `lugar_id` (`lugar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Lugares`
+--
+
+LOCK TABLES `Lugares` WRITE;
+/*!40000 ALTER TABLE `Lugares` DISABLE KEYS */;
+INSERT INTO `Lugares` VALUES (1,'Reboot Academy','08:00:00','18:00:00'),(2,'SPAR Ripoche','10:00:00','21:00:00'),(3,'Cafeteria Lanzarote','08:00:00','22:00:00'),(4,'Compra Oro Martínez','09:00:00','20:00:00'),(5,'Joyería La Fleur','09:00:00','20:00:00'),(6,'Oro La Balanza','09:00:00','20:00:00');
+/*!40000 ALTER TABLE `Lugares` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Personas`
+--
+
+DROP TABLE IF EXISTS `Personas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Personas` (
+  `persona_id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) DEFAULT NULL,
+  `apellidos` varchar(255) DEFAULT NULL,
+  `rol` enum('Profesor Reeboot','Alumno Reboot','Limpiadora','Directora Reeboot','Policía','Portero','Joyero','Dependiente','Cajera','Repartidor') DEFAULT NULL,
+  `inventario_id` int DEFAULT NULL,
+  `color_pelo` enum('negro','rubio','pelirrojo') DEFAULT NULL,
+  `altura` enum('alto','medio','bajo') DEFAULT NULL,
+  `constitucion` enum('fuerte','normal','delgada') DEFAULT NULL,
+  PRIMARY KEY (`persona_id`),
+  UNIQUE KEY `persona_id` (`persona_id`),
+  KEY `inventario_id` (`inventario_id`),
+  CONSTRAINT `Personas_ibfk_1` FOREIGN KEY (`inventario_id`) REFERENCES `Inventario` (`inventario_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Personas`
+--
+
+LOCK TABLES `Personas` WRITE;
+/*!40000 ALTER TABLE `Personas` DISABLE KEYS */;
+INSERT INTO `Personas` VALUES (1,'Rafiki','Ndiaye','Alumno Reboot',1,'negro','alto','delgada'),(2,'Mustafa','Jimenez','Alumno Reboot',2,'negro','bajo','fuerte'),(3,'Simba','Hernandez','Alumno Reboot',3,'negro','alto','delgada'),(4,'Mufasa','Lion','Alumno Reboot',4,'rubio','medio','delgada'),(5,'Nala','Ndiaye','Alumno Reboot',5,'pelirrojo','alto','fuerte'),(6,'Juan','Pérez','Profesor Reeboot',NULL,'rubio','medio','normal'),(7,'María','López','Directora Reeboot',NULL,'pelirrojo','bajo','fuerte'),(8,'Carlos','Gómez','Portero',NULL,'negro','alto','fuerte'),(9,'Ana','Fernández','Joyero',NULL,'rubio','medio','delgada'),(10,'David','Martínez','Dependiente',NULL,'negro','bajo','normal'),(11,'Jose','Martinez','Joyero',NULL,'negro','medio','fuerte'),(12,'George','Smith','Joyero',NULL,'rubio','alto','delgada'),(13,'Pedro','Lopez','Alumno Reboot',1,'negro','medio','normal'),(14,'Paco','Morrison','Alumno Reboot',1,'rubio','bajo','delgada'),(15,'Matias','Santos','Alumno Reboot',2,'negro','alto','fuerte');
+/*!40000 ALTER TABLE `Personas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Registro_Reboot`
+--
+
+DROP TABLE IF EXISTS `Registro_Reboot`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Registro_Reboot` (
+  `registro_id` int NOT NULL AUTO_INCREMENT,
+  `persona_id` int NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `hora_entrada` time DEFAULT NULL,
+  `hora_salida` time DEFAULT NULL,
+  PRIMARY KEY (`registro_id`),
+  UNIQUE KEY `registro_id` (`registro_id`),
+  KEY `persona_id` (`persona_id`),
+  CONSTRAINT `Registro_Reboot_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Registro_Reboot`
+--
+
+LOCK TABLES `Registro_Reboot` WRITE;
+/*!40000 ALTER TABLE `Registro_Reboot` DISABLE KEYS */;
+INSERT INTO `Registro_Reboot` VALUES (1,1,'2025-03-10','09:00:00','16:00:00'),(2,1,'2025-03-11','09:00:00','16:00:00'),(3,1,'2025-03-12','09:00:00','16:00:00'),(4,1,'2025-03-13','09:00:00','16:00:00'),(5,1,'2025-03-14','09:00:00','16:00:00'),(6,2,'2025-03-10','09:00:00','16:00:00'),(7,2,'2025-03-11','09:00:00','16:00:00'),(8,2,'2025-03-13','09:00:00','16:00:00'),(9,2,'2025-03-14','09:00:00','16:00:00'),(10,3,'2025-03-10','09:00:00','16:00:00'),(11,3,'2025-03-11','09:00:00','16:00:00'),(12,3,'2025-03-12','09:00:00','16:00:00'),(13,3,'2025-03-13','09:00:00','16:00:00'),(14,3,'2025-03-14','09:00:00','16:00:00'),(15,4,'2025-03-10','09:00:00','16:00:00'),(16,4,'2025-03-11','09:00:00','16:00:00'),(17,4,'2025-03-12','09:00:00','16:00:00'),(18,4,'2025-03-13','09:00:00','16:00:00'),(19,5,'2025-03-10','09:00:00','16:00:00'),(20,5,'2025-03-11','09:00:00','16:00:00'),(21,5,'2025-03-12','09:00:00','16:00:00'),(22,5,'2025-03-13','09:00:00','16:00:00'),(23,5,'2025-03-14','09:00:00','16:00:00'),(24,6,'2025-03-10','08:00:00','16:00:00'),(25,6,'2025-03-11','08:00:00','16:00:00'),(26,6,'2025-03-12','08:00:00','16:00:00'),(27,6,'2025-03-13','08:00:00','16:00:00'),(28,6,'2025-03-14','08:00:00','16:00:00'),(29,7,'2025-03-10','10:00:00','14:00:00'),(30,7,'2025-03-11','10:00:00','14:00:00'),(31,7,'2025-03-12','10:00:00','14:00:00'),(32,7,'2025-03-13','10:00:00','14:00:00'),(33,7,'2025-03-14','10:00:00','14:00:00'),(34,13,'2025-03-10','09:00:00','15:30:00'),(35,13,'2025-03-11','09:00:00','15:30:00'),(36,13,'2025-03-12','09:00:00','15:30:00'),(37,13,'2025-03-13','09:00:00','15:30:00'),(38,13,'2025-03-14','09:00:00','15:30:00'),(39,14,'2025-03-10','09:10:00','16:01:00'),(40,14,'2025-03-11','09:10:00','16:01:00'),(41,14,'2025-03-12','09:10:00','16:01:00'),(42,14,'2025-03-13','09:10:00','16:01:00'),(43,15,'2025-03-10','09:10:00','16:01:00'),(44,15,'2025-03-11','09:10:00','16:01:00'),(45,15,'2025-03-12','09:10:00','13:00:00'),(46,15,'2025-03-13','09:10:00','16:01:00');
+/*!40000 ALTER TABLE `Registro_Reboot` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `Sospechoso`
+--
+
+DROP TABLE IF EXISTS `Sospechoso`;
+/*!50001 DROP VIEW IF EXISTS `Sospechoso`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Sospechoso` AS SELECT 
+ 1 AS `persona_id`,
+ 1 AS `nombre`,
+ 1 AS `apellidos`,
+ 1 AS `rol`,
+ 1 AS `inventario_id`,
+ 1 AS `color_pelo`,
+ 1 AS `altura`,
+ 1 AS `constitucion`,
+ 1 AS `fecha`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `Ubicacion_Persona`
+--
+
+DROP TABLE IF EXISTS `Ubicacion_Persona`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Ubicacion_Persona` (
+  `up_id` int NOT NULL AUTO_INCREMENT,
+  `persona_id` int DEFAULT NULL,
+  `lugar_id` int DEFAULT NULL,
+  `desde` time DEFAULT NULL,
+  `hasta` time DEFAULT NULL,
+  PRIMARY KEY (`up_id`),
+  UNIQUE KEY `up_id` (`up_id`),
+  KEY `persona_id` (`persona_id`),
+  KEY `lugar_id` (`lugar_id`),
+  CONSTRAINT `Ubicacion_Persona_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`),
+  CONSTRAINT `Ubicacion_Persona_ibfk_2` FOREIGN KEY (`lugar_id`) REFERENCES `Lugares` (`lugar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Ubicacion_Persona`
+--
+
+LOCK TABLES `Ubicacion_Persona` WRITE;
+/*!40000 ALTER TABLE `Ubicacion_Persona` DISABLE KEYS */;
+INSERT INTO `Ubicacion_Persona` VALUES (35,1,1,'13:00:00','13:30:00'),(36,1,4,'13:30:00','13:40:00'),(37,1,5,'13:40:00','13:50:00'),(38,1,6,'13:50:00','14:00:00'),(39,2,1,'13:00:00','14:00:00'),(40,3,1,'13:00:00','13:15:00'),(41,3,2,'13:15:00','14:00:00'),(42,4,2,'13:00:00','14:00:00'),(43,5,3,'13:00:00','14:00:00'),(44,6,1,'13:00:00','13:15:00'),(45,6,3,'13:15:00','14:00:00'),(46,7,5,'13:00:00','14:00:00'),(47,8,1,'13:00:00','14:30:00'),(48,8,1,'13:30:00','13:45:00'),(49,8,1,'13:45:00','14:00:00'),(50,9,4,'13:00:00','14:00:00'),(51,10,3,'13:00:00','14:00:00'),(52,11,3,'13:00:00','14:00:00'),(53,12,2,'13:00:00','14:00:00'),(54,13,1,'13:00:00','13:50:00'),(55,14,1,'13:00:00','14:00:00'),(56,15,3,'13:05:00','13:20:00'),(57,15,2,'13:45:00','14:05:00');
+/*!40000 ALTER TABLE `Ubicacion_Persona` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Final view structure for view `Correccion`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Correccion`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`reboot`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Correccion` AS select `Personas`.`persona_id` AS `persona_id` from `Personas` where (`Personas`.`constitucion` = 'delagada') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Sospechoso`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Sospechoso`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`reboot`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Sospechoso` AS select `Personas`.`persona_id` AS `persona_id`,`Personas`.`nombre` AS `nombre`,`Personas`.`apellidos` AS `apellidos`,`Personas`.`rol` AS `rol`,`Personas`.`inventario_id` AS `inventario_id`,`Personas`.`color_pelo` AS `color_pelo`,`Personas`.`altura` AS `altura`,`Personas`.`constitucion` AS `constitucion`,`Registro_Reboot`.`fecha` AS `fecha` from (`Personas` join `Registro_Reboot` on((`Registro_Reboot`.`persona_id` = `Personas`.`persona_id`))) where (`Registro_Reboot`.`fecha` = '2025-03-12') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-03-14 12:39:27
