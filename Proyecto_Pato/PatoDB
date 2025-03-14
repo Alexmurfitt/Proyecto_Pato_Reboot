@@ -42,7 +42,7 @@ CREATE TABLE `Declaraciones` (
   UNIQUE KEY `declaraciones_id` (`declaraciones_id`),
   KEY `persona_id` (`persona_id`),
   CONSTRAINT `Declaraciones_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `Declaraciones` (
 
 LOCK TABLES `Declaraciones` WRITE;
 /*!40000 ALTER TABLE `Declaraciones` DISABLE KEYS */;
-INSERT INTO `Declaraciones` VALUES (1,1,'Me quede todo el día en clases'),(2,2,'Estuve todo el rato en la academia y creo recordar que alguién más estuvo por ahí.'),(3,3,'Estuve solo un ratito en la academia y luego me fui a comprar al Spar.'),(4,4,'Fui al Spar y me encontré con un compañero'),(5,5,'Fui a merendar a la cafetería'),(6,6,'Estuve en clases y luego me fui a la cafetería y vi a un compañero'),(7,7,'Fui a la joyería a vender mi anillo de boda junto al resto de mis joyas'),(8,8,'Estuve en la academia, salí a tomar un café y volví'),(9,9,'Una persona vino varias veces para vender oro.'),(10,10,'Estuve en el trabajo y vi a varios alumnos de reboot'),(11,11,'Hubo una persona que vino muchas veces a vender oro'),(12,12,'Un joven alto y delgado vendió oro en varias ocasiones. Además, un compañero me dijo que habia hecho muchas ventas a un solo cliente.');
+INSERT INTO `Declaraciones` VALUES (1,1,'Me quede todo el día en clases'),(2,2,'Estuve todo el rato en la academia y creo recordar que alguién más estuvo por ahí.'),(3,3,'Estuve solo un ratito en la academia y luego me fui a comprar al Spar.'),(4,4,'Fui al Spar y me encontré con un compañero'),(5,5,'Fui a merendar a la cafetería'),(6,6,'Estuve en clases y luego me fui a la cafetería y vi a un compañero'),(7,7,'Fui a la joyería a vender mi anillo de boda junto al resto de mis joyas'),(8,8,'Estuve en la academia, salí a tomar un café y volví'),(9,9,'Una persona vino varias veces para vender oro.'),(10,10,'Estuve en el trabajo y vi a varios alumnos de reboot'),(11,11,'Hubo una persona que vino muchas veces a vender oro'),(12,12,'Un joven alto y delgado vendió oro en varias ocasiones. Además, un compañero me dijo que habia hecho muchas ventas a un solo cliente.'),(13,13,'No noté nada raro. Acompañé a Matias que se encontraba muy mal y luego volví a clase. Solo quedaba una persona cuando volví, que era Paco'),(14,14,'Estuve todo el día en la academia finalizando algunos LABS atrasados'),(15,15,'Ese día me encontraba bastante mal, asi que decicí irme algo antes. Me encontré unos conocidos en el bar, y luego fui a comprar un té al SPAR de aquí al lado');
 /*!40000 ALTER TABLE `Declaraciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +246,7 @@ CREATE TABLE `Ubicacion_Persona` (
   KEY `lugar_id` (`lugar_id`),
   CONSTRAINT `Ubicacion_Persona_ibfk_1` FOREIGN KEY (`persona_id`) REFERENCES `Personas` (`persona_id`),
   CONSTRAINT `Ubicacion_Persona_ibfk_2` FOREIGN KEY (`lugar_id`) REFERENCES `Lugares` (`lugar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +255,7 @@ CREATE TABLE `Ubicacion_Persona` (
 
 LOCK TABLES `Ubicacion_Persona` WRITE;
 /*!40000 ALTER TABLE `Ubicacion_Persona` DISABLE KEYS */;
-INSERT INTO `Ubicacion_Persona` VALUES (35,1,1,'13:00:00','13:30:00'),(36,1,4,'13:30:00','13:40:00'),(37,1,5,'13:40:00','13:50:00'),(38,1,6,'13:50:00','14:00:00'),(39,2,1,'13:00:00','14:00:00'),(40,3,1,'13:00:00','13:15:00'),(41,3,2,'13:15:00','14:00:00'),(42,4,2,'13:00:00','14:00:00'),(43,5,3,'13:00:00','14:00:00'),(44,6,1,'13:00:00','13:15:00'),(45,6,3,'13:15:00','14:00:00'),(46,7,5,'13:00:00','14:00:00'),(47,8,1,'13:00:00','14:30:00'),(48,8,1,'13:30:00','13:45:00'),(49,8,1,'13:45:00','14:00:00'),(50,9,4,'13:00:00','14:00:00'),(51,10,3,'13:00:00','14:00:00'),(52,11,3,'13:00:00','14:00:00'),(53,12,2,'13:00:00','14:00:00');
+INSERT INTO `Ubicacion_Persona` VALUES (35,1,1,'13:00:00','13:30:00'),(36,1,4,'13:30:00','13:40:00'),(37,1,5,'13:40:00','13:50:00'),(38,1,6,'13:50:00','14:00:00'),(39,2,1,'13:00:00','14:00:00'),(40,3,1,'13:00:00','13:15:00'),(41,3,2,'13:15:00','14:00:00'),(42,4,2,'13:00:00','14:00:00'),(43,5,3,'13:00:00','14:00:00'),(44,6,1,'13:00:00','13:15:00'),(45,6,3,'13:15:00','14:00:00'),(46,7,5,'13:00:00','14:00:00'),(47,8,1,'13:00:00','14:30:00'),(48,8,1,'13:30:00','13:45:00'),(49,8,1,'13:45:00','14:00:00'),(50,9,4,'13:00:00','14:00:00'),(51,10,3,'13:00:00','14:00:00'),(52,11,3,'13:00:00','14:00:00'),(53,12,2,'13:00:00','14:00:00'),(54,13,1,'13:00:00','13:50:00'),(55,14,1,'13:00:00','14:00:00'),(56,15,3,'13:05:00','13:20:00'),(57,15,2,'13:45:00','14:05:00');
 /*!40000 ALTER TABLE `Ubicacion_Persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-14 11:21:40
+-- Dump completed on 2025-03-14 12:07:35
